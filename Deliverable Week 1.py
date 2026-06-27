@@ -52,9 +52,12 @@ cleanedsoldlist = combinesold.drop_duplicates()
 print("Sold dataset total rows after dropped duplicates")
 print(len(cleanedsoldlist))
 
+# Drop incorrect columns
+drop_columns = ["latfilled", "lonfilled"]
+fixedsoldlist = cleanedsoldlist.drop(columns = drop_columns)
 
 # Filter to residential
-filteredsold = cleanedsoldlist[cleanedsoldlist["PropertyType"] == "Residential"]
+filteredsold = fixedsoldlist[fixedsoldlist["PropertyType"] == "Residential"]
 print("Sold dataset total rows after filtering")
 print(len(filteredsold))
 
@@ -92,8 +95,10 @@ listing202512 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListi
 
 listing202601 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202601.csv", encoding="ISO-8859-1")
 listing202602 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202602.csv", encoding="ISO-8859-1")
+listing202603 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202603.csv", encoding="ISO-8859-1")
+listing202604 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202604.csv", encoding="ISO-8859-1")
 
-listinglist = [listing202401, listing202402, listing202403, listing202404, listing202405, listing202406, listing202407, listing202408, listing202409, listing202410, listing202411, listing202412, listing202501, listing202502, listing202503, listing202504, listing202505, listing202506, listing202507, listing202508, listing202509, listing202510, listing202511, listing202512, listing202601, listing202602]
+listinglist = [listing202401, listing202402, listing202403, listing202404, listing202405, listing202406, listing202407, listing202408, listing202409, listing202410, listing202411, listing202412, listing202501, listing202502, listing202503, listing202504, listing202505, listing202506, listing202507, listing202508, listing202509, listing202510, listing202511, listing202512, listing202601, listing202602, listing202603, listing202604]
 
 # Count rows before concatenation
 print("Listing dataset total rows before concatenation")
