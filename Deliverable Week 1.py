@@ -1,8 +1,12 @@
 import pandas as pd
 
-# add CSV files
 
-# use sold_filled for: 202405,202406,202407,202501
+
+
+# Sold
+
+# Import all CSVs
+# Create a list with all CSVs
 
 sold202401 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202401.csv", encoding="ISO-8859-1")
 sold202402 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202402.csv", encoding="ISO-8859-1")
@@ -34,38 +38,80 @@ sold202601 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold2026
 sold202602 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202602.csv", encoding="ISO-8859-1")
 sold202603 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202603.csv", encoding="ISO-8859-1")
 sold202604 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202604.csv", encoding="ISO-8859-1")
+sold202605 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202605.csv", encoding="ISO-8859-1")
 
 soldlist = [sold202401, sold202402, sold202403, sold202404, sold202405, sold202406, sold202407, sold202408, sold202409, sold202410, sold202411, sold202412, sold202501, sold202502, sold202503, sold202504, sold202505, sold202506, sold202507, sold202508, sold202509, sold202510, sold202511, sold202512, sold202601, sold202602, sold202603, sold202604]
 
-# Count rows before concatenation
-print("Sold dataset total rows before concatenation:")
-for solddataset in soldlist:
-    print(len(solddataset))
-
 # Concatenate sold datasets
-combinesold = pd.concat(soldlist)
-print("Sold dataset total rows after concatenation")
-print(len(combinesold))
 
-# Drop duplicates
-cleanedsoldlist = combinesold.drop_duplicates()
-print("Sold dataset total rows after dropped duplicates")
-print(len(cleanedsoldlist))
+sold_concat = pd.concat(soldlist)
 
-# Drop incorrect columns
-drop_columns = ["latfilled", "lonfilled"]
-fixedsoldlist = cleanedsoldlist.drop(columns = drop_columns)
+# Drop duplicates and extra columns
+
+sold_drop_duplicates = sold_concat.drop_duplicates()
+
+columns_to_drop = ["latfilled", "lonfilled"]
+sold_cleaned = sold_drop_duplicates.drop(columns=columns_to_drop)
 
 # Filter to residential
-filteredsold = fixedsoldlist[fixedsoldlist["PropertyType"] == "Residential"]
-print("Sold dataset total rows after filtering")
-print(len(filteredsold))
 
-# Create a copy
-mainsold = filteredsold.copy()
+sold_filtered = sold_cleaned[sold_cleaned["PropertyType"] == "Residential"]
 
-# Export as Sold CSV
-mainsold.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold.csv', index=False)
+# Create CSV
+
+sold = sold_filtered.copy()
+sold.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSSold.csv', index=False)
+
+# Sold row counts for each month
+# 17976
+# 19925
+# 23276
+# 24640
+# 26487
+# 24328
+# 26240
+# 24558
+# 21267
+# 23274
+# 20279
+# 20241
+# 18738
+# 18702
+# 21445
+# 23262
+# 23154
+# 22883
+# 23646
+# 22972
+# 22443
+# 23233
+# 19088
+# 20538
+# 16487
+# 19010
+# 23372
+# 24261
+
+# Sold row counts after concatenation
+# 615725
+
+# Sold row counts after dropping duplicates
+# 615585
+
+# Sold row counts after filtering to residential
+# 414015
+
+
+
+
+
+
+
+
+# Listing
+
+# Import all CSVs
+# Create a list with all CSVs
 
 listing202401 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202401.csv", encoding="ISO-8859-1")
 listing202402 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202402.csv", encoding="ISO-8859-1")
@@ -97,31 +143,62 @@ listing202601 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListi
 listing202602 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202602.csv", encoding="ISO-8859-1")
 listing202603 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202603.csv", encoding="ISO-8859-1")
 listing202604 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202604.csv", encoding="ISO-8859-1")
+listing202605 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202605.csv", encoding="ISO-8859-1")
 
 listinglist = [listing202401, listing202402, listing202403, listing202404, listing202405, listing202406, listing202407, listing202408, listing202409, listing202410, listing202411, listing202412, listing202501, listing202502, listing202503, listing202504, listing202505, listing202506, listing202507, listing202508, listing202509, listing202510, listing202511, listing202512, listing202601, listing202602, listing202603, listing202604]
 
-# Count rows before concatenation
-print("Listing dataset total rows before concatenation")
-for listingdataset in listinglist:
-    print(len(listingdataset))
+# Concatenate sold datasets
 
-# Concatenate datasets
-combinelisting = pd.concat(listinglist)
-print("Listing dataset total rows after concatenation")
-print(len(combinelisting))
+listing_concat = pd.concat(listinglist)
 
-# Drop duplicates
-cleanedlistinglist = combinelisting.drop_duplicates()
-print("Listing dataset total rows after dropped duplicates")
-print(len(cleanedlistinglist))
+# Drop duplicates and extra columns
+
+listing_cleaned = listing_concat.drop_duplicates()
 
 # Filter to residential
-filteredlisting = cleanedlistinglist[cleanedlistinglist["PropertyType"] == "Residential"]
-print("Listing dataset total rows after filtering")
-print(len(filteredlisting))
 
-# Create a copy
-mainlisting = filteredlisting.copy()
+listing_filtered = listing_cleaned[listing_cleaned["PropertyType"] == "Residential"]
 
-# Export as Sold CSV
-mainlisting.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing.csv', index=False)
+# Create CSV
+
+listing = listing_filtered.copy()
+listing.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSListing.csv', index=False)
+
+# Sold row counts for each month
+# 27454
+# 27447
+# 32282
+# 36503
+# 38796
+# 35893
+# 36340
+# 35305
+# 34625
+# 34730
+# 25128
+# 19417
+# 37469
+# 33983
+# 38492
+# 40187
+# 40271
+# 26399
+# 27345
+# 25210
+# 26923
+# 27586
+# 20677
+# 18773
+# 35302
+# 32884
+# 39153
+# 39020
+
+# Sold row counts after concatenation
+# 893594
+
+# Sold row counts after cleaning
+# 893594
+
+# Sold row counts after filtering to residential
+# 567549
