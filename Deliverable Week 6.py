@@ -1,5 +1,8 @@
 import pandas as pd
 import geopandas as gpd
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 sold = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSSold5.csv")
 gdf = gpd.read_file("/Users/eshaanchachad/Desktop/IDXExchange/DistrictAreas2526_-284845464123469011.geojson")
@@ -104,6 +107,72 @@ joinedlisting = gpd.sjoin(
 )
 
 listingmain = joinedlisting.copy()
+
+print(joinedsold.head())
+print(listingmain.head())
+
+# Create an environment for numeric distribution summaries
+
+def summary(df, column):
+    summary = df[column].describe()
+    return summary
+
+# Environment to create a histogram
+
+def histogram(df, column):
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower_bound = Q1 - (1.5 * IQR)
+    upper_bound = Q3 + (1.5 * IQR)
+
+    df = df[df[column].between(lower_bound, upper_bound)]
+
+    plt.hist(df[column], bins = 20, edgecolor = "black")
+    plt.title("Distribution of " + column)
+    plt.xlabel(column)
+    plt.ylabel("Frequency")
+    plt.show()
+
+    # Environment to create a boxplot
+
+# Environment to create a boxplot
+
+def boxplot(df, column):
+    Q1 = df[column].quantile(0.25)
+    Q3 = df[column].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lower_bound = Q1 - (1.5 * IQR)
+    upper_bound = Q3 + (1.5 * IQR)
+
+    df = df[df[column].between(lower_bound, upper_bound)]
+
+    plt.boxplot(df[column])
+    plt.title("Distribution of " + column)
+    plt.ylabel(column)
+    plt.show()
+
+# Environment to identify extreme outliers
+
+def extreme_outliers(df, column):
+    EEQ1 = df[column].quantile(0.25)
+    EEQ3 = df[column].quantile(0.75)
+    EEIQR = EEQ3 - EEQ1
+    
+    ee_lower_bound = EEQ1 - (3 * EEIQR)
+    ee_upper_bound = EEQ3 + (3 * EEIQR)
+
+    extreme_data = df[
+        (df[column] < ee_lower_bound) | 
+        (df[column] > ee_upper_bound)
+    ]
+
+    extreme_outliers = extreme_data[column]
+    return(extreme_outliers)
+
+print(summary(sold, "PropertyType"))
 
 soldmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSSold6.csv', index=False)
 listingmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSListing6.csv', index=False)
