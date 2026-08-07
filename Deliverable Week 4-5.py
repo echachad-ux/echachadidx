@@ -29,7 +29,7 @@ print(sold_columns_80)
 lenbefore80 = len(sold.columns)
 print(lenbefore80,"columns before removing 80% null Sold columns")
 
-# Remove columns with 90% or higher null
+# Remove columns with 80% or higher null
 sold = sold.drop(columns=sold_columns_80)
 lenafter80 = len(sold.columns)
 print(lenafter80,"columns after removing 80% null Sold columns")
@@ -65,12 +65,13 @@ for column in ColumnsToNumeric:
 
 print(len(sold))
 
-sold = sold[sold["ClosePrice"] > 0]
-sold = sold[sold["LivingArea"] > 0]
-sold = sold[sold["DaysOnMarket"] > 0]
-sold = sold[sold["MainLevelBedrooms"] >= 0]
-sold = sold[sold["BathroomsTotalInteger"] >= 0]
+sold1 = sold[(sold["ClosePrice"] > 0) | (sold["ClosePrice"].isna())]
+sold2 = sold1[(sold1["LivingArea"] > 0) | (sold1["LivingArea"].isna())]
+sold3 = sold2[(sold2["DaysOnMarket"] > 0) | (sold2["DaysOnMarket"].isna())]
+sold4 = sold3[(sold3["MainLevelBedrooms"] >= 0) | (sold3["MainLevelBedrooms"].isna())]
+sold5 = sold4[(sold4["BathroomsTotalInteger"] >= 0) | (sold4["BathroomsTotalInteger"].isna())]
 
+sold = sold5
 
 print(len(sold))
 
@@ -172,14 +173,15 @@ for column in ColumnsToNumeric:
 
 print(len(listing))
 
-listing1 = listing[listing["ClosePrice"] > 0]
-listing2 = listing1[listing1["LivingArea"] > 0]
-listing3 = listing2[listing2["DaysOnMarket"] > 0]
-listing4 = listing3[listing3["MainLevelBedrooms"] >= 0]
-listing5 = listing4[listing4["BathroomsTotalInteger"] >= 0]
+listing1 = listing[(listing["ClosePrice"] > 0) | (listing["ClosePrice"].isna())]
+listing2 = listing1[(listing1["LivingArea"] > 0) | (listing1["LivingArea"].isna())]
+listing3 = listing2[(listing2["DaysOnMarket"] > 0) | (listing2["DaysOnMarket"].isna())]
+listing4 = listing3[(listing3["MainLevelBedrooms"] >= 0) | (listing3["MainLevelBedrooms"].isna())]
+listing5 = listing4[(listing4["BathroomsTotalInteger"] >= 0) | (listing4["BathroomsTotalInteger"].isna())]
 listing = listing5
 
 print(len(listing))
+
 
 # Create flags for inconsistent timelines
 
