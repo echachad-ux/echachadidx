@@ -108,16 +108,14 @@ listingmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSListing7.
 
 # Written Analysis:
 
-# Total rows in Sold: 230901
-# Rows in Sold after filtering ClosePrice: 15965
-# Rows in Sold after filtering LivingArea: 9131
-# Rows in Sold after filtering DaysOnMarket: 16394
-# Rows in Sold after filtering by all 3: 892
+# Total rows in Sold: 397300
+# Rows in Sold after filtering ClosePrice: 368396
+# Rows in Sold after filtering LivingArea: 379984
+# Rows in Sold after filtering DaysOnMarket: 368395
+# Rows in Sold after filtering by all 3: 336893
 
-# Listing Analysis
-
-# Total rows in Listing: 70275
-# Rows in Listing after filtering ClosePrice: 4421
-# Rows in Listing after filtering LivingArea: 2670
-# Rows in Listing after filtering DaysOnMarket: 4955
-# Rows in Listing after filtering by all 3: 175
+# Total rows in Listing: 536346
+# Rows in Listing after filtering ClosePrice: 527205
+# Rows in Listing after filtering LivingArea: 510189
+# Rows in Listing after filtering DaysOnMarket: 488498
+# Rows in Listing after filtering by all 3: 459652
