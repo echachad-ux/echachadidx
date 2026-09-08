@@ -101,21 +101,21 @@ print(listing.columns)
 soldmain = sold.copy()
 listingmain = listing.copy()
 
-soldmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSSold7.csv', index=False)
-listingmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSListing7.csv', index=False)
+soldmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/FinalCRMLSSold7.csv', index=False)
+listingmain.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/FinalCRMLSListing7.csv', index=False)
 
 
 
 # Written Analysis:
 
-# Total rows in Sold: 397300
-# Rows in Sold after filtering ClosePrice: 368396
-# Rows in Sold after filtering LivingArea: 379984
-# Rows in Sold after filtering DaysOnMarket: 368395
-# Rows in Sold after filtering by all 3: 336893
+# Total rows in Sold: 460449
+# Rows in Sold after filtering ClosePrice: 426939
+# Rows in Sold after filtering LivingArea: 440561
+# Rows in Sold after filtering DaysOnMarket: 427037
+# Rows in Sold after filtering by all 3: 390569
 
-# Total rows in Listing: 536346
-# Rows in Listing after filtering ClosePrice: 527205
-# Rows in Listing after filtering LivingArea: 510189
-# Rows in Listing after filtering DaysOnMarket: 488498
-# Rows in Listing after filtering by all 3: 459652
+# Total rows in Listing: 621578
+# Rows in Listing after filtering ClosePrice: 611328
+# Rows in Listing after filtering LivingArea: 591333
+# Rows in Listing after filtering DaysOnMarket: 571554
+# Rows in Listing after filtering by all 3: 537903
