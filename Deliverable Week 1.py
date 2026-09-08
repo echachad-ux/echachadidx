@@ -2,6 +2,7 @@ import pandas as pd
 
 
 
+
 # Sold
 
 # Import all CSVs
@@ -38,8 +39,11 @@ sold202602 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold2026
 sold202603 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202603.csv", encoding="ISO-8859-1")
 sold202604 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202604.csv", encoding="ISO-8859-1")
 sold202605 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202605.csv", encoding="ISO-8859-1")
+sold202606 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202606.csv", encoding="ISO-8859-1")
+sold202607 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202607.csv", encoding="ISO-8859-1")
+sold202608 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSSold202608.csv", encoding="ISO-8859-1")
 
-soldlist = [sold202401, sold202402, sold202403, sold202404, sold202405, sold202406, sold202407, sold202408, sold202409, sold202410, sold202411, sold202412, sold202501, sold202502, sold202503, sold202504, sold202505, sold202506, sold202507, sold202508, sold202509, sold202510, sold202511, sold202512, sold202601, sold202602, sold202603, sold202604]
+soldlist = [sold202401, sold202402, sold202403, sold202404, sold202405, sold202406, sold202407, sold202408, sold202409, sold202410, sold202411, sold202412, sold202501, sold202502, sold202503, sold202504, sold202505, sold202506, sold202507, sold202508, sold202509, sold202510, sold202511, sold202512, sold202601, sold202602, sold202603, sold202604, sold202605, sold202606, sold202607, sold202608]
 
 # Concatenate sold datasets
 
@@ -90,15 +94,19 @@ sold.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSSold.csv', index
 # 19010
 # 23372
 # 24261
+# 24191
+# 25806
+# 25429
+# 22544
 
 # Sold row counts after concatenation
-# 615725
+# 713695
 
 # Sold row counts after dropping duplicates
-# 615585
+# 713555
 
 # Sold row counts after filtering to residential
-# 414015
+# 480043
 
 
 
@@ -143,8 +151,12 @@ listing202602 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListi
 listing202603 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202603.csv", encoding="ISO-8859-1")
 listing202604 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202604.csv", encoding="ISO-8859-1")
 listing202605 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202605.csv", encoding="ISO-8859-1")
+listing202606 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202606.csv", encoding="ISO-8859-1")
+listing202607 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202607.csv", encoding="ISO-8859-1")
+listing202608 = pd.read_csv("/Users/eshaanchachad/Desktop/IDXExchange/CRMLSListing202608.csv", encoding="ISO-8859-1")
 
-listinglist = [listing202401, listing202402, listing202403, listing202404, listing202405, listing202406, listing202407, listing202408, listing202409, listing202410, listing202411, listing202412, listing202501, listing202502, listing202503, listing202504, listing202505, listing202506, listing202507, listing202508, listing202509, listing202510, listing202511, listing202512, listing202601, listing202602, listing202603, listing202604]
+
+listinglist = [listing202401, listing202402, listing202403, listing202404, listing202405, listing202406, listing202407, listing202408, listing202409, listing202410, listing202411, listing202412, listing202501, listing202502, listing202503, listing202504, listing202505, listing202506, listing202507, listing202508, listing202509, listing202510, listing202511, listing202512, listing202601, listing202602, listing202603, listing202604, listing202605, listing202606, listing202607, listing202608]
 
 # Concatenate sold datasets
 
@@ -192,12 +204,16 @@ listing.to_csv('/Users/eshaanchachad/Desktop/IDXExchange/csvs/CRMLSListing.csv',
 # 32884
 # 39153
 # 39020
+# 36201
+# 33278
+# 35987
+# 35054
 
 # Sold row counts after concatenation
-# 893594
+# 1034114
 
 # Sold row counts after cleaning
-# 893594
+# 1034114
 
 # Sold row counts after filtering to residential
-# 567549
+# 658004
